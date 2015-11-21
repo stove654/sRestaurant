@@ -1,0 +1,155 @@
+<ion-view>
+
+    <ion-nav-title>
+        <a class="logo-app" ng-click="goToPage('main.menu')">{{logoText}}</a>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-clear button-header"><i class="ion ion-ios-personadd"></i></button>
+            <button class="button button-clear button-header"><i class="ion ion-ios-search"></i></button>
+            <button class="button button-clear button-header"><i class="ion ion-ios-person"></i></button>
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content class="has-footer">
+        <div class="header-menu" >
+            <div class="item item-thumbnail-left assertive-bg">
+                <img ng-src="{{restaurant.logo}}">
+                <div horizontal layout center end-justified style="height: 74px">
+                    <button class="button button-clear button-header button-order-help"><i class="ion ion-ios-help-outline"></i></button>
+                    <div flex>
+                        <h2 horizontal layout center end-justified class="light" style="font-size: 20px">{{restaurant.name}}</h2>
+                        <p class="text-right" style="color: #fff; font-size: 12px">+ VAT: {{order.total * 0.1 | currency:currencyText}}</p>
+                        <p class="text-right" style="color: #fff; font-size: 12px">Delivery fee: {{5 | currency:currencyText}}</p>
+                        <p class="text-right" style="color: #f1f1f1;font-size: 16px;">Total: {{order.total + order.total * 0.1 + 5| currency:currencyText}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order">
+            <div class="menus">
+
+                <div class="list-foods">
+                    <div class="foods">
+                        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" does-continue="true" ng-repeat="item in order.foods">
+                            <ion-slide class="item">
+                                <div horizontal layout class="padding-5" style="height: 72px;">
+                                    <h2 flex class="padding-5 no-margin" vertical layout start center-justified>
+                                        {{item.name}}
+                                        <div ng-show="item.note" class="item-note">Note: {{item.note}}</div>
+                                    </h2>
+                                    <div class="padding-5" horizontal layout center>&times; {{item.quantity}}</div>
+                                    <div class="padding-5" horizontal layout center>{{item.price * item.quantity | currency:currencyText}}</div>
+                                </div>
+
+                            </ion-slide>
+                            <ion-slide horizontal layout>
+                                <div class="padding-10-5">
+                                    <img ng-src="{{item.image}}" alt=""/>
+                                </div>
+                                <div flex vertical layout>
+                                    <div class="name-food-slide" horizontal layout style="padding-top: 12px;">
+                                        <div class="customer-note" horizontal layout center center-justified ng-click="addFoodNote(item)">
+                                        <span>
+                                            <i class="ion ion-edit"></i>
+                                        </span>
+                                        </div>
+                                        <div class="full-half" horizontal layout ng-if="item.showFH">
+                                            <div horizontal layout center center-justified flex>
+                                                <span ng-class="{active: !item.isHalf}" ng-click="checkFull(item)">F</span>
+                                                <span ng-class="{active: item.isHalf}" ng-click="checkHalf(item)">H</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="full-half" vertical layout ng-if="!item.showFH"></div>
+                                        <div class="quantity-food" horizontal layout center center-justified flex>
+                                            <span class="button-quantity minus" ng-click="subQuantity(item, true)"><i class="ion ion-ios-minus-empty"></i></span>
+                                            <span class="font-size-10">{{item.quantity}} &times; {{item.price | currency:currencyText}}</span>
+                                            <span class="button-quantity plus" ng-click="addQuantity(item, true)"><i class="ion ion-ios-plus-empty"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-to-card remove" vertical layout center center-justified ng-click="removeFood($index)">
+                                    <i class="icon ion-ios-trash-outline"></i>
+                                    Remove
+                                </div>
+
+                            </ion-slide>
+                        </ion-slide-box>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-summary">
+            <h2>Order information</h2>
+            <ul class="list">
+
+                <li class="item item-checkbox" ng-if="typeOrder == 2">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    <div class="bold header-checkbox">Delivery</div>
+                    Your order will be delivered to your address
+                </li>
+
+                <li class="item item-checkbox" ng-if="typeOrder == 2 || typeOrder == 3">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    <div class="bold header-checkbox">Pickup <span>(and save on delivery: {{20 | currency:currencyText }})</span></div>
+                    <div>You will pick up the order yourself at restaurant.</div>
+                    <div class="bold">Shop No.1 1B, LGF, Food Court Shopprix Mall</div>
+                </li>
+
+                <li class="border-bottom"></li>
+
+                <li class="item item-checkbox" ng-if="typeOrder == 2 || typeOrder == 3">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    <div class="bold header-checkbox">Later</div>
+                </li>
+
+                <div ng-if="typeOrder == 2 || typeOrder == 3" horizontal layout class="search-summary">
+                    <div flex class="search-date" style="margin-right: 10px;">
+                        <input type="date" ng-model="date.now"/>
+                    </div>
+                    <div flex class="search-date" style="margin-left: 10px;">
+                        <input type="date" ng-model="date.now"/>
+                    </div>
+                </div>
+
+                <li class="border-bottom"></li>
+                <div class="payment-total">
+                    <strong>Total</strong> <strong> {{order.total | currency:currencyText}}</strong>
+                </div>
+                <div class="text-comment">
+                    (if you want to add any comments, e.g. about allergies or delivery instructions, this is the right place)
+                </div>
+
+                <div class="link-comment"><i class="ion ion-arrow-right-b"></i> Add a message to your order</div>
+            </ul>
+        </div>
+    </ion-content>
+
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" ng-click="goToPage('main.order',{type : typeOrder})">
+            <i class="icon ion-ios-cart-outline"></i>
+            Cart
+        </a>
+        <a class="tab-item active" ng-click="goToPage('main.orderSummary',{type : typeOrder})">
+            <i class="icon ion-compose"></i>
+            Order summary
+        </a>
+        <a class="tab-item" ng-click="goToPage('main.orderPayment',{type : typeOrder})">
+            <i class="icon ion-card"></i>
+            Payment
+        </a>
+        <a class="tab-item" ng-click="goToPage('main.orderConfirm',{type : typeOrder})">
+            <i class="icon ion-checkmark-round"></i>
+            Confirm
+        </a>
+    </div>
+</ion-view>

@@ -1,0 +1,85 @@
+<ion-view class="login-page">
+  <ion-content>
+    <div class="login" vertical layout ng-hide="signin || signup">
+
+      <div flex class="text-center" horizontal layout center center-justified>
+        <img src="./images/logo.png" alt="" class="img-logo"/>
+      </div>
+
+      <div class="form-login-page">
+
+        <div class="list default-form-input">
+          <label class="item item-input">
+            <input type="email" placeholder="Your email" ng-model="user.username">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+        </div>
+
+        <button class="button button-block button-default" ng-click="login()" ng-disabled="!user.username || !user.password">
+          Log in to account
+        </button>
+        <div class="forgot-password text-center" ng-click="forgotPass()">
+          Forgot password?
+        </div>
+        <!--<button class="button button-block button-default button-opacity">
+          Continue Without Account
+        </button>-->
+      </div>
+
+      <div class="text-center text-bottom-login" ng-click="goSignup()">
+        Signup
+      </div>
+
+      <div class="bottom-login-page">
+        <div class="button-bar">
+          <a class="button" ng-click="loginFacebook()">Facebook</a>
+          <a class="button">Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="login" vertical layout ng-show="signup">
+
+      <div flex class="text-center" horizontal layout center center-justified>
+        <img src="./images/logo.png" alt="" class="img-logo"/>
+      </div>
+
+      <div class="form-login-page form-singup-page" style="margin-bottom: 60px">
+        <p class="mess-info">{{message}}</p>
+
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="email" placeholder="Your email" ng-model="account.email">
+          </label>
+          <label class="item item-input">
+            <input placeholder="Password" type="password" ng-model="account.password" name="pw" id="pw"/>
+            <ul id="strength" check-strength="account.password"></ul>
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Confirm Password" ng-model="account.rePassword">
+          </label>
+          <label class="item item-input button-signup" ng-click="signUp()">
+            <div class="creat-text">Create Account</div>
+          </label>
+        </div>
+
+        <div class="forgot-password text-center" ng-click="needHelp()">
+          Need help?
+        </div>
+      </div>
+
+      <div class="text-center text-bottom-login">
+        Already on Quikie
+      </div>
+
+      <div class="bottom-login-page">
+        <div class="button-bar" style="border-right: 0">
+          <a class="button" ng-click="goBackLogin()">Log in</a>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

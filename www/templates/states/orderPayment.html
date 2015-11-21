@@ -1,0 +1,210 @@
+<ion-view>
+
+    <ion-nav-title>
+        <a class="logo-app" ng-click="goToPage('main.menu')">{{logoText}}</a>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-clear button-header"><i class="ion ion-ios-personadd"></i></button>
+            <button class="button button-clear button-header"><i class="ion ion-ios-search"></i></button>
+            <button class="button button-clear button-header"><i class="ion ion-ios-person"></i></button>
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content class="has-footer">
+        <div class="header-menu">
+            <div class="item item-thumbnail-left assertive-bg">
+                <img ng-src="{{restaurant.logo}}">
+
+                <div horizontal layout center end-justified style="height: 74px">
+                    <button class="button button-clear button-header button-order-help"><i
+                            class="ion ion-ios-help-outline"></i></button>
+                    <div flex>
+                        <h2 horizontal layout center end-justified class="light" style="font-size: 20px">
+                            {{restaurant.name}}</h2>
+
+                        <p class="text-right" style="color: #fff; font-size: 12px">+ VAT: {{order.total * 0.1 |
+                            currency:currencyText}}</p>
+
+                        <p class="text-right" style="color: #fff; font-size: 12px">Delivery fee: {{5 |
+                            currency:currencyText}}</p>
+
+                        <p class="text-right" style="color: #f1f1f1;font-size: 16px;">Total: {{order.total + order.total
+                            * 0.1 + 5| currency:currencyText}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-payment">
+            <div class="payment-header">
+                <div class="icon-check-payment">
+                    <i class="ion-ios-checkmark"></i>
+                </div>
+                <div class="payment-lock">
+                    <i class="ion-ios-locked"></i>
+
+                    <div class="payment-user">
+                        <h3>2.SECURE CHECKOUT</h3>
+                        <em>Select delivery address and payment type</em>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-body">
+                <div class="payment-login">
+                    <h4><strong>Returning customer?</strong> Login in for a much faster checkout!</h4>
+                    <button class="btn-payment-login button button-balanced">Login <i class="ion-chevron-right"></i>
+                    </button>
+                    <br>
+                    <button class="btn-payment-login button button-positive"><i class="ion-social-facebook"></i> Login
+                        in with Facebook <i class="ion-chevron-right"></i></button>
+                </div>
+                <div class="payment-info payment-white">
+
+                    <form action="">
+                        <div class="payment-required">
+                            <div class="payment-icon-req">*</div>
+                            <em>Required fileds</em>
+
+                            <p>You can create an account after placing your order</p>
+                        </div>
+                        <div class="payment-form">
+                            <div class="payment-icon-req">*</div>
+                            <label>First name</label>
+                            <input type="text">
+                        </div>
+                        <div class="payment-form">
+                            <div class="payment-icon-req">*</div>
+                            <label>Last name</label>
+                            <input type="text">
+                        </div>
+                        <div class="payment-form">
+                            <div class="payment-icon-req">*</div>
+                            <label>Email name</label>
+                            <input type="email">
+                            <em>
+                                You will receive an email with your order details.
+                            </em>
+                        </div>
+                        <div class="payment-form">
+                            <div class="payment-icon-req">*</div>
+                            <label>Mobile</label>
+                            <input class="pre-phone" type="number" placeholder="91">
+                            <input class="last-phone" type="number">
+                            <em>Please insert your mobile number. You'll receive a confirmation sms form us soon.</em>
+                        </div>
+                        <div class="bg-space">
+
+                        </div>
+                        <div ng-if="typeOrder == 2">
+                            <h4><strong>Your delivery address</strong></h4>
+
+                            <div class="payment-required">
+                                <div class="payment-icon-req">*</div>
+                                <em>Required fileds</em>
+                            </div>
+                            <div class="payment-form">
+                                <div class="payment-icon-req">*</div>
+                                <label>Flat No./House No.</label>
+                                <input type="text">
+                            </div>
+                            <div class="payment-form">
+                                <div class="payment-icon-req">*</div>
+                                <label>Apartment/ Locality name</label>
+                                <input type="text">
+                            </div>
+                            <div>
+                                <strong>Your location</strong>
+
+                                <p>Sector 19(Noida), Noida</p>
+                            </div>
+                            <div class="payment-address-link">
+                                <a href=""> <i class="ion-arrow-right-b"></i> Delivery Instructions
+                                    <span>(Optional)</span></a>
+                                <a href=""> <i class="ion-arrow-right-b"></i> Add more Delivery details</a>
+                            </div>
+                            <div class="bg-space">
+
+                            </div>
+                        </div>
+
+                        <div ng-if="typeOrder == 2 || typeOrder == 3">
+                            <h4><strong>Choose how to pay</strong></h4>
+
+                            <div class="payment-required">
+                                <div class="payment-icon-req">*</div>
+                                <em>Required fileds</em>
+                            </div >
+                            <ul class="list">
+
+                                <li class="item item-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox">
+                                    </label>
+                                    Payment now
+                                </li>
+                                <li class="item item-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox">
+                                    </label>
+                                    Pay on delivery
+                                </li>
+                            </ul>
+                            <div class="bg-space">
+
+                            </div>
+                        </div>
+
+                        <div class="payment-total">
+                            <strong>Total</strong> <strong> {{order.total | currency:currencyText}}</strong>
+                        </div>
+                        <div>
+                            <ul class="list">
+                                <li class="item item-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox">
+                                    </label>
+                                    Please inform me about new restaurants and great offers
+                                </li>
+                                <li class="item item-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox">
+                                    </label>
+                                    I agree to receive a comparable dish for the sam price if my original is not
+                                    available
+                                </li>
+                            </ul>
+                            <div class="bg-space"></div>
+                        </div>
+                        <p>By clicking this button, you agree with our <a href="">terms and conditions</a></p>
+                        <button class="button button-full button-positive" ng-click="orderNow()">Place order now <i
+                                class="ion-chevron-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" ng-click="goToPage('main.order',{type : typeOrder})">
+            <i class="icon ion-ios-cart-outline"></i>
+            Cart
+        </a>
+        <a class="tab-item" ng-click="goToPage('main.orderSummary',{type : typeOrder})">
+            <i class="icon ion-compose"></i>
+            Order summary
+        </a>
+        <a class="tab-item active" ng-click="goToPage('main.orderPayment',{type : typeOrder})">
+            <i class="icon ion-card"></i>
+            Payment
+        </a>
+        <a class="tab-item" ng-click="goToPage('main.orderConfirm',{type : typeOrder})">
+            <i class="icon ion-checkmark-round"></i>
+            Confirm
+        </a>
+    </div>
+    </div>
+</ion-view>
+<style>
+</style>

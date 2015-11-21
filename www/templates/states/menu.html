@@ -1,0 +1,107 @@
+<ion-view>
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <a class="logo-app">{{restaurant.name}}</a>
+    </ion-nav-title>
+    <ion-content>
+        <div class="info-category">
+            <ion-scroll direction="x">
+                <ul>
+                    <li ng-repeat="item in categories" ng-class="{active: category.id == item.id}" ng-click="selectedCategory(item)">
+                        {{item.name}}
+                    </li>
+                </ul>
+            </ion-scroll>
+        </div>
+        <div class="menus">
+            <div class="list-foods">
+                <div class="foods">
+                    <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" ng-repeat="item in foods">
+                        <ion-slide class="item data-default-item">
+                            <h3>{{item.name}}
+                                <span class="pull-right" ng-show="!item.isHalf">{{item.price | currency:'&#8377;'}}</span>
+                                <span class="pull-right" ng-show="item.isHalf">{{item.priceHalf | currency:'&#8377;'}}</span>
+                            </h3>
+
+                            <p class="no-margin padding-des">{{item.description}}</p>
+
+                            <span class="swipe-select">SWIPE TO <br/>SELECT</span>
+                        </ion-slide>
+                        <ion-slide horizontal layout>
+                            <div class="style-full-half" vertical layout>
+                                <div ng-show="item.priceHalf" >
+                                  <div flex class="is-full" horizontal layout center center-justified ng-class="{active: !item.isHalf}" ng-click="ChooseTypeItem(item,false)">
+                                    Full
+                                  </div>
+                                  <div flex class="is-full" horizontal layout center center-justified ng-class="{active: item.isHalf}" ng-click="ChooseTypeItem(item,true)">
+                                    Half
+                                  </div>
+                                </div>
+                              <div style="height: 75px;width: 65px;" ng-hide="item.priceHalf" >
+                                <div style="height: 100%" flex class="is-full" horizontal layout center center-justified ng-class="{active: !item.isHalf}">
+                                  Full
+                                </div>
+                              </div>
+                            </div>
+                            <div flex horizontal layout>
+                                <!--<div class="customer-note" horizontal layout center center-justified
+                                     ng-click="addFoodNote(item)">
+                                        <span>
+                                            <i class="ion ion-edit"></i>
+                                        </span>
+                                </div>-->
+                                <div class="quantity-food" vertical layout flex>
+                                    <div class="button-quantity minus" ng-click="subQuantity(item)"><i
+                                            class="ion ion-minus"></i></div>
+                                    <div class="font-size-10 quantity-number" flex>{{item.quantity}} &times; <span ng-if="!item.isHalf">{{item.price | currency:'&#8377;'}}</span><span ng-if="item.isHalf">{{item.priceHalf | currency:'&#8377;'}}</span></div>
+                                    <div class="button-quantity plus" ng-click="addQuantity(item)"><i
+                                            class="ion ion-plus"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="add-to-card" vertical layout center center-justified
+                                 ng-click="addNewItem(item)">
+                                <i class="icon ion-ios-cart-outline"></i>
+                                Add to card
+                            </div>
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="footer-menu-view" horizontal layout>
+        <div flex horizontal layout center class="take-order-text">
+
+            <!--<i class="ion-ios-cart" style="color: #168668"></i>-->
+            <object data="./images/Cart_Icon.svg" type="image/svg+xml" style="margin-right: 10px">
+            </object>{{order.calculation.totalQty}} items in your cart.
+        </div>
+        <div horizontal layout center center-justified>
+            <button class="button button-light" ng-click="goOrderPayment()">
+                PLACE ORDER
+            </button>
+        </div>
+
+    </ion-footer-bar>
+</ion-view>
+<!--
+<div class="button-float-material" ng-click="goToPage('main.order',{type : typeOrder})">
+    <div style="position: relative; line-height: 46px;">
+        <i class="ion ion-bag"></i>
+        <span style="    position: absolute;
+    right: 18px;
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+    border-radius: 50%;
+    top: 15px;
+    background-color: transparent;
+    width: inherit;
+    height: inherit">{{order.quantity}}</span>
+    </div>
+</div>-->

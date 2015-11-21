@@ -1,0 +1,36 @@
+<ion-view>
+
+  <ion-nav-buttons side="right">
+    <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <a class="logo-app">Orders History</a>
+  </ion-nav-title>
+
+  <ion-content style="background-color: #fff">
+    <div class="title-order-history" horizontal layout center center-justified>
+      <div flex>Your Orders</div>
+      <div>
+        <span class="number-orders-history">{{orders.length}}</span>
+      </div>
+    </div>
+    <div class="last-time-orders" horizontal layout center center-justified>
+      <div flex>
+        Last 3 months
+      </div>
+      <div class="positive">
+        Filter orders
+      </div>
+    </div>
+    <div class="list list-order-history">
+      <a class="order-list-history item item-icon-right" ng-repeat="order in orders" ng-click="goDetailOrderHistory(order.id)">
+        <i class="icon ion-ios-arrow-right"></i>
+        <h2>Olive</h2>
+        <h3>Total: {{order.totalAmount | currency:'&#8377;'}}</h3>
+        <p>{{order.createdTime | date : 'medium'}}</p>
+      </a>
+    </div>
+  </ion-content>
+
+</ion-view>

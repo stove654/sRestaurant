@@ -1,0 +1,106 @@
+<ion-view>
+
+    <ion-nav-title class="text-center">
+        <a class="logo-app" ng-click="goToPage('main.menu')">{{logoText}}</a>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-clear button-header"><i class="ion ion-ios-search"></i></button>
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+
+        </div>
+    </ion-nav-buttons>
+    <ion-content class="has-footer">
+        <div class="text-center img-restaurant-default energized">
+            <img src="./images/img-restaurant-default.jpg" alt="" class="img-responsive"/>
+            <div style="    position: absolute;
+    color: #fff;
+    top: 35px;
+    padding: 0 20px;">
+                <div class="title-list-res">
+                    {{title}}
+                </div>
+                <div class="subtitle-list-res">
+                    {{subtitle}}
+                </div>
+                <div class="content-list-res">
+                    {{content}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="padding-5">
+            <div class="restaurants-list padding-5" ng-repeat="item in restaurants" ng-click="goDetailRestaurant(item)">
+                <div class="box-restaurant" >
+                    <div class="header-box-header" horizontal layout style="padding: 5px">
+                        <div flex class="padding-5">
+                            <div class="name-restaurant-box">
+                                {{item.name}}
+                            </div>
+                            <div class="location-restaurant-box">
+                                {{item.address}}
+                            </div>
+                        </div>
+                        <div class="padding-10 hearth-vote" horizontal layout center center-justified ng-class="{active: item.hearth}" ng-click="bookmarkRestaurant(item, $event)">
+                            <i class="ion ion-heart"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <img ng-src="{{item.logoUrl}}" alt="" class="img-responsive"/>
+                    </div>
+                    <div class="header-box-header bottom-box-restaurant" horizontal layout style="padding: 5px">
+                        <div flex class="padding-5">
+                            <div class="name-restaurant-box">
+                                OPEN -{{item.saturday}}
+                            </div>
+                            <div class="location-restaurant-box">
+                               <!-- | North Indian |-->
+                              {{item.description}}
+                            </div>
+                        </div>
+                        <div class="hearth-vote" horizontal layout center center-justified >
+                            <object data="./images/Check-In_Icon.svg" type="image/svg+xml" style="    padding: 0 5px;">
+                            </object>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="restaurant" ng-repeat="item in restaurants" ng-click="goDetailRestaurant(item)">
+                    <div class="images-restaurant div-img" ng-style="{'background-image': 'url(\'' + item.image + '\')'}">
+                    </div>
+                    <div class="info-restaurant">
+                        <div class="name">
+                            {{item.name}}
+                        </div>
+                        <div class="location">
+                            <i class="ion ion-location"></i> {{item.location}}
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+
+    </ion-content>
+    <div class="tabs tabs-icon-top tabs-restaurants">
+        <a class="tab-item">
+            <!--<i class="icon ion-ios-paperplane-outline"></i>-->
+            <object data="./images/TabBar_Nearby.svg" type="image/svg+xml" >
+            </object>
+            <div>Nearby</div>
+        </a>
+        <a class="tab-item">
+            <!--<i class="icon ion-ios-heart-outline"></i>-->
+            <object data="./images/TabBar_Fav.svg" type="image/svg+xml" >
+            </object>
+            <div>Favourites</div>
+        </a>
+        <a class="tab-item">
+            <!--<i class="icon ion-ios-person-outline"></i>-->
+
+            <object data="./images/TabBar_Profile.svg" type="image/svg+xml" >
+            </object>
+            <div>Profile</div>
+        </a>
+    </div>
+</ion-view>

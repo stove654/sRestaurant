@@ -1,0 +1,60 @@
+<ion-view>
+
+    <ion-nav-title>
+        <a class="logo-app" ng-click="goToPage('main.menu')">{{logoText}}</a>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-clear button-header"><i class="ion ion-ios-personadd"></i></button>
+            <button class="button button-clear button-header"><i class="ion ion-ios-search"></i></button>
+            <button class="button button-clear button-header"><i class="ion ion-ios-person"></i></button>
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content class="has-footer">
+        <div class="header-menu" >
+            <div class="item assertive-bg">
+                <div horizontal layout center end-justified style="height: 74px;text-align: center">
+                    <img class="logo-confirm" ng-src="{{restaurant.logo}}">
+                </div>
+            </div>
+        </div>
+        <div class="page-confirm">
+            <h1>Thank you!</h1>
+            <p>Please allow us few minutes while {{restaurant.name}} processes your order.You will receive an SMS with the exact delivery time one your order is confirmed</p>
+        </div>
+    </ion-content>
+
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" ng-click="goToPage('main.order',{type : typeOrder})">
+            <i class="icon ion-ios-cart-outline"></i>
+            Cart
+        </a>
+        <a class="tab-item" ng-click="goToPage('main.orderSummary',{type : typeOrder})">
+            <i class="icon ion-compose"></i>
+            Order summary
+        </a>
+        <a class="tab-item" ng-click="goToPage('main.orderPayment',{type : typeOrder})">
+            <i class="icon ion-card"></i>
+            Payment
+        </a>
+        <a class="tab-item active" ng-click="goToPage('main.orderConfirm',{type : typeOrder})">
+            <i class="icon ion-checkmark-round"></i>
+            Confirm
+        </a>
+    </div>
+</ion-view>
+<style>
+    .page-confirm {
+        text-align: center;
+        padding: 35px;
+    }
+    .logo-confirm {
+        width: 85px;
+        border-radius: 50%;
+        height: 85px;
+        margin: 0 auto;
+    }
+</style>

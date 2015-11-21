@@ -1,0 +1,57 @@
+<ion-view>
+
+    <ion-nav-title>
+        <a class="logo-app" ng-click="goToPage('main.menu')">{{logoText}}</a>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-clear button-header"><i class="ion ion-ios-search"></i></button>
+            <button class="button button-clear button-header" ng-click="logout()"><i class="ion ion-ios-person"></i></button>
+            <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" does-continue="true">
+            <ion-slide ng-repeat="item in slideList">
+                <div class="images-restaurant div-img" ng-style="{'background-image': 'url(\'' + item.image + '\')'}" horizontal layout center center-justified>
+                    <div class="info-restaurant text-center">
+                        <div class="name-restaurant-slide">
+                            Hello {{user.username}}
+                        </div>
+                        <div class="button-slide">
+                            <span class="assertive-bg">breakfast ?</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="restaurants-list padding-5">
+            <div class="padding-5 res-relative" ng-repeat="item in restaurants">
+                <i ng-click="select($event)" class="ion-ios-heart"></i>
+                <div class="list card no-margin" ng-click="goDetailRestaurant(item)">
+                    <div class="item item-image">
+                        <img ng-src="{{item.image}}">
+                    </div>
+
+                    <a class="item padding-5-10" >
+                        <div class="name">
+                            {{item.name}}
+                        </div>
+                        <div class="location">
+                            <i class="ion ion-location"></i> {{item.location}}
+                        </div>
+                    </a>
+                    <img class="restaurant-log" ng-src="{{item.logo}}" alt="logo">
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>
+<div class="button-float-material">
+    <i class="ion ion-ios-plus-empty"></i>
+</div>

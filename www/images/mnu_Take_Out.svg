@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>mnu_Take_Out</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="mnu_Take_Out" sketch:type="MSLayerGroup">
+            <rect id="24x24" stroke="#979797" opacity="0.01" fill-opacity="0.01" fill="#FFFFFF" sketch:type="MSShapeGroup" x="0" y="0" width="24" height="24"></rect>
+            <g id="To-Go" transform="translate(1.000000, 1.000000)" stroke="#4E4E4E" stroke-width="0.5" sketch:type="MSShapeGroup">
+                <path d="M11,0 L22,5.9410802 L11,11.8821604 L0,5.9410802 L11,0 L11,0 Z M10.9485631,21.9604662 L0.135262157,15.6332137 L0,5.9410802 L10.9485631,11.8721165 L10.9485631,21.9604662 L10.9485631,21.9604662 Z" id="Polygon-1"></path>
+                <path d="M10.9835977,11.8740499 L10.9835977,21.9646082 L21.8990745,15.7949642 L21.8990745,5.93507448 L10.9835977,11.8740499 L10.9835977,11.8740499 Z" id="Polygon-1" fill="#A4A4A4"></path>
+                <path d="M3.36838986,7.7561681 L7.36961884,9.98019979 L16.9346987,4.50879004 L12.9853063,2.40810258 L3.36838986,7.7561681 L3.36838986,7.7561681 Z M3.33290599,11.4830823 L4.20957001,11.2720364 L4.97792539,12.476428 L6.12737507,12.1992739 L7.27805827,13.7790119 L7.3328242,9.98992974 L3.33290599,7.76268424 L3.33290599,11.4830823 L3.33290599,11.4830823 Z" id="Polygon-1" fill="#4A4A4A"></path>
+            </g>
+        </g>
+    </g>
+</svg>

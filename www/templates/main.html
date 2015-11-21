@@ -1,0 +1,38 @@
+<ion-side-menus>
+
+  <ion-side-menu-content drag-content="false">
+
+    <ion-nav-bar class="bar-assertive" align-title="center">
+      <ion-nav-back-button enable-menu-with-back-views="true">
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view animation="slide-left-right" name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="right" class="sidebar-left">
+    <ion-header-bar class="bar-assertive">
+      <h1 class="title">QUiKiE</h1>
+    </ion-header-bar>
+    <ion-content scroll="false">
+      <div>
+
+      </div>
+      <ul class="list menu-left">
+        <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+        <a class="item" menu-close ui-sref="main.restaurantList" ui-sref-active="active">Restaurant List</a>
+        <a class="item" menu-close ui-sref="main.ordersHistory" ui-sref-active="active">Orders History</a>
+        <a class="item" menu-close>Settings</a>
+        <a class="item" menu-close>Help</a>
+        <a class="item" menu-close>About</a>
+        <a class="item" menu-close ng-click="logout()">Log out</a>
+      </ul>
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>

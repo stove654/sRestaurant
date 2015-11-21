@@ -1,0 +1,207 @@
+<ion-view>
+
+  <ion-nav-title>
+    <a class="logo-app">Your Cart</a>
+  </ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button ng-click="help()" class="button button-clear button-header">
+        <i class="fa fa-hand-paper-o"></i>
+      </button>
+      <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content delegate-handle="orderScroll" style="background-color: #fff">
+    <div class="list-payments">
+      <ul>
+        <li horizontal layout center ng-class="{active: action.id == 1}" ng-click="actionOrder(0)">
+          <!-- <i class="ion ion-ios-cart-outline"></i>-->
+          <object data="./images/Pay_Step_1-Order.svg" type="image/svg+xml">
+          </object>
+          Your Cart
+        </li>
+        <li horizontal layout center ng-class="{active: action.id == 2}" ng-click="actionOrder(1)">
+          <!--<i class="ion ion-card"></i>-->
+          <object data="./images/Pay_Step_2-Pay.svg" type="image/svg+xml">
+          </object>
+          Payment
+        </li>
+        <li horizontal layout center ng-class="{active: action.id == 3}" ng-click="actionOrder(2)">
+          <!--<i class="ion ion-ios-checkmark-outline"></i>-->
+          <object data="./images/Pay_Step_3-Confirm.svg" type="image/svg+xml">
+          </object>
+          Confirm Order
+        </li>
+        <li aria-disabled="true" horizontal layout center ng-class="{active: action.id == 4}">
+          <!--<i class="ion ion-ios-list-outline"></i>-->
+          <object data="./images/Pay_Step_4-Invoice.svg" type="image/svg+xml">
+          </object>
+          Your Invoice
+        </li>
+      </ul>
+    </div>
+    <div class="detail-for-order">
+      <div class="card-item info-res">
+        <div class="card no-margin">
+          <div class="detail-text padding-5">
+            <div style="width: 50%; float: left" class="text-order">
+              <p ng-show="action.id == 4">
+                Details of your “FOR HERE” order on 24 Sep 2015, at 01:03am:
+              </p>
+
+              <p ng-hide="action.id == 4">
+                Detail of your Card.
+              </p>
+            </div>
+            <div style="width: 50%; float: right" class="padding-5" ng-hide="action.id == 4">
+              <div class="subtotal-order" horizontal layout>
+                <div flex horizontal layout center end-justified>Subtotal:</div>
+                <div flex horizontal layout center end-justified>{{order.calculation.subTotal | currency:'&#8377;'}}</div>
+              </div>
+              <div horizontal layout>
+                <div flex horizontal layout center end-justified>Sale Tax:</div>
+                <div flex horizontal layout center end-justified>{{order.calculation.taxTotal[1] | currency:'&#8377;'}}</div>
+              </div>
+              <div class="subtotal-order" horizontal layout>
+                <div flex horizontal layout center end-justified>VAT:</div>
+                <div flex horizontal layout center end-justified>{{order.calculation.VAT | currency:'&#8377;'}}</div>
+              </div>
+              <div class="subtotal-order" horizontal layout>
+                <div flex horizontal layout center end-justified>TOTAL:</div>
+                <div flex horizontal layout center end-justified>{{order.calculation.total | currency:'&#8377;'}}</div>
+              </div>
+            </div>
+
+            <div style="width: 50%; float: right" class="padding-5" ng-show="action.id == 4">
+              <div class="subtotal-order" horizontal layout>
+                <div flex horizontal layout center end-justified>Subtotal:</div>
+                <div flex horizontal layout center end-justified>{{orderCbAnoumt | currency:'&#8377;'}}</div>
+              </div>
+              <div horizontal layout>
+                <div flex horizontal layout center end-justified>Sale Tax:</div>
+                <div flex horizontal layout center end-justified>{{orderCbAnoumt * 0.1 | currency:'&#8377;'}}</div>
+              </div>
+              <div class="subtotal-order" horizontal layout>
+                <div flex horizontal layout center end-justified>VAT</div>
+                <div flex horizontal layout center end-justified>{{orderCbAnoumt * 0.1 | currency:'&#8377;'}}</div>
+              </div>
+              <div class="subtotal-order" horizontal layout>
+                <div flex horizontal layout center end-justified>TOTAL:</div>
+                <div flex horizontal layout center end-justified>{{orderCbAnoumt * 1.1 | currency:'&#8377;'}}</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="payments-method" ng-if="action.id == 2">
+      <div class="button-bar">
+        <a class="button" ng-class="{active: !maymentMethod}" ng-click="selectedPaymentMethod(0)">Pay by Card</a>
+        <a class="button" ng-class="{active: maymentMethod}" ng-click="selectedPaymentMethod(1)">Pay Cash</a>
+      </div>
+    </div>
+
+    <div class="text-payment-method text-center" ng-if="action.id == 2">
+      <!--Login UI, if paying with card... <br/>
+      If paying by cash, let’s discuss the UI...-->
+    </div>
+
+    <div class="next-button" ng-if="action.id == 2">
+      <button class="button button-block button-default" ng-click="actionOrder(2)">
+        Next: Confirm Order
+      </button>
+    </div>
+
+
+    <div class="text-payment-method text-confirm-order text-center" ng-if="action.id == 3">
+      <!--Provide a summary of payment method, etc once again, for confirming...-->
+      Your information will payment thought <strong>{{methodPay}}</strong>
+    </div>
+
+    <div class="next-button confirm-button-order" ng-if="action.id == 3">
+      <button class="button button-block button-default" ng-click="actionOrder(3)">
+        CONFIRM ORDER
+      </button>
+    </div>
+    <div class="text-invoice-bottom text-center padding-10" ng-if="action.id == 4">
+      <!-- UI for “Request Printed Invoice”, or “email invoice"-->
+      <table class="table table-request">
+        <caption>Your order <strong>is placed successfully.</strong></caption>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Size</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in orderRequest.data.orderDetails">
+          <th>{{$index + 1}}</th>
+          <th>{{item.itemName}}</th>
+          <th>{{item.price | currency:'&#8377;'}}</th>
+          <th>{{item.quantity}}</th>
+          <th>{{item.size | menuItemSize}}</th>
+        </tr>
+        </tbody>
+      </table>
+      <div class="requset-number">
+        <p>Your order #</p>
+        <h2 class="requset-order-number">
+          {{orderRequest.data.order.orderNo}}
+        </h2>
+        <p class="request-date">
+          {{orderRequest.data.order.createdTime | date:"MM/dd/yyyy 'at' h:mma"}}
+        </p>
+      </div>
+    </div>
+
+    <div class="next-button" ng-if="action.id == 4">
+<!--
+      <button class="button button-block button-default">
+        ￼Your order will arrive in 12:34
+      </button>
+-->
+    </div>
+
+    <div class="text-foods-order" ng-if="action.id == 1">
+      You've Selected:
+    </div>
+
+    <div class="list-foods-order" ng-if="action.id == 1">
+      <ul>
+        <li horizontal layout class="padding-5" ng-repeat="item in order.foods">
+          <div class="info-food-order padding-5" flex>
+            <div class="top-name-order">
+              {{item.name}}
+            </div>
+            <div>
+              <input ng-model="item.note" type="text" placeholder="Add notes here..."/>
+            </div>
+          </div>
+          <div class="price-food-order">
+            <div class="top-name-order">
+              {{item.quantity}} &times; {{item.price | currency:'&#8377;'}}
+            </div>
+            <div horizontal layout center end-justified class="cancel-item" ng-click="removeFood($index)">
+              Cancel item <i class="ion ion-ios-close-empty"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="next-button" ng-if="action.id == 1" ng-click="actionOrder(1)">
+      <button class="button button-block button-default">
+        Next: Payment
+      </button>
+    </div>
+  </ion-content>
+
+</ion-view>
