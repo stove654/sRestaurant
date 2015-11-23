@@ -8,29 +8,21 @@
  * Controller of the starter
  */
 angular.module('starter')
-  .controller('OrdersHistoryCtrl', ['$scope', '$fetchData', '$stateParams', '$http', '$auth', 'qConfig', '$ionicLoading', '$rootScope', '$socketIo', 'toastr', '$ionicScrollDelegate', '$state',
-    function ($scope, $fetchData, $stateParams, $http, $auth, qConfig, $ionicLoading, $rootScope, $socketIo, toastr, $ionicScrollDelegate, $state) {
+  .controller('OrdersHistoryCtrl', function ($scope, $ionicLoading, $state, localStorageService) {
 
-      $scope.goDetailOrderHistory = function (id) {
-        $state.go('main.orderHistory', {id: id})
-      };
+    $scope.ordersHistory = localStorageService.get('sRestaurantHistory');
+    console.log($scope.ordersHistory)
 
-      var user = $auth.getCurrentUser();
-      console.log(user);
-      var _filters = [
-        {
-          property: 'createdByApp',
-          value: user.id,
-          type: 'string',
-          cmp: 'eq'
-        }
-      ];
-      var loadOrderByUser = function () {
-        $fetchData.getData('Order', null, null, _filters, null).then(function (resp) {
-          console.log(resp.all());
-          $scope.orders = resp.all();
-        })
-      };
+    $scope.goDetailOrderHistory = function (id, item) {
+      console.log(item);
+      item.id = id;
+      localStorageService.set('sRestaurantOrderDetail', item);
+      $state.go('main.orderHistory', {id: id})
+    };
 
-      loadOrderByUser();
-    }]);
+    $scope.clear = function () {
+      $scope.clearOrderHistory();
+      $scope.ordersHistory = [];
+    }
+
+  });

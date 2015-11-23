@@ -1,0 +1,9 @@
+<ion-popover-view class="languages">
+    <ion-content>
+        <ul class="dropdown-menu right">
+            <li ng-repeat="lang in locales">
+                <a ng-click="selectLangId(lang)" href><img ng-src="{{lang.img}}" width="24" class="m-r-sm">{{lang.name}}</a>
+            </li>
+        </ul>
+    </ion-content>
+</ion-popover-view>

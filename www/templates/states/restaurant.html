@@ -1,149 +1,143 @@
 <ion-view>
 
-  <ion-nav-buttons side="right">
-    <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
-  <ion-nav-title>
-    <a class="logo-app">{{restaurant.name}}</a>
-  </ion-nav-title>
+    <ion-nav-title>
+        <a class="logo-app">{{restaurant.name}}</a>
+    </ion-nav-title>
 
-  <ion-content>
-    <div class="header-detail-restaurant">
-      <div class="images-restaurant images-restaurant-detail  div-img"
-           ng-style="{'background-image': 'url(\'' + restaurant.logoUrl + '\')'}">
-      </div>
+    <ion-content>
+        <div class="header-detail-restaurant">
+            <div class="images-restaurant images-restaurant-detail  div-img"
+                 ng-style="{'background-image': 'url(\'' + restaurant.image + '\')'}">
+            </div>
 
-      <div class="info-restaurant-detail" vertical layout>
-        <div horizontal layout class="header-infomation-image">
-          <div class="info-restaurant" flex>
-            <div class="name-restaurant">
-              {{detailRes.name}}
-            </div>
-            <div class="location-restaurant">
-              <i class="ion ion-location"></i> {{detailRes.address}}
-            </div>
-          </div>
-          <div class="padding-10 hearth-vote" horizontal layout center center-justified
-               ng-class="{active: restaurant.hearth}" ng-click="bookmarkRestaurant($event)">
-            <i class="ionn ion-heart hearth-icon"></i>
-          </div>
-        </div>
-        <div flex></div>
-        <div class="vote-restaurant">
-          <div class="button-bar">
-            <a class="button"><i class="ion ion-star energized"></i> {{restaurant.rate}}</a>
-          </div>
-        </div>
-        <div class="function-list">
-          <div class="button-bar">
-            <a class="button tab-item" ng-click="goToPage('main.menu',{type: 1, idRestaurant: idRes})">
-              <!--<i class="icon fa fa-cutlery"></i>-->
-              <object data="./images/mnu_For_Here.svg" type="image/svg+xml">
-              </object>
-              <div>For here</div>
-            </a>
-            <a class="button tab-item" ng-click="goToPage('main.menu',{type: 2, idRestaurant: idRes})">
-              <!--<i class="icon fa fa-inbox"></i>
-              Take Out-->
-              <object data="./images/mnu_Take_Out.svg" type="image/svg+xml">
-              </object>
-              <div>Take Out</div>
-            </a>
-            <a class="button tab-item icon-uber">
-              <!--<img src="./images/UBER-icon.png" alt="" class="img-responsive"/>
-              Take Uber-->
-              <object data="./images/mnu_Uber.svg" type="image/svg+xml">
-              </object>
-              <div>Take Uber</div>
-            </a>
-            <a class="button tab-item">
-              <!--<i class="icon ion-ios-star-outline"></i>
-              Rate 'em-->
-              <object data="./images/mnu_Rate_Em.svg" type="image/svg+xml">
-              </object>
-              <div>Rate 'em</div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="list-card more-info-res">
-      <div class="card-item info-res">
-        <div class="card">
-          <div class="item">
-            <div>
-              HOURS: {{detailRes.saturday}}
-            </div>
-            <div>
-              CUISINES: Pure Veg | North Indian
-            </div>
-            <div horizontal layout>
-              <div flex horizontal layout class="info-phone">
-                <i class="ion ion-ios-telephone"></i>
-
-                <div>
-                  Phone <br/>
-                  {{detailRes.telephone}}
+            <div class="info-restaurant-detail" vertical layout>
+                <div horizontal layout class="header-infomation-image">
+                    <div class="info-restaurant" flex>
+                        <div class="name-restaurant">
+                            {{restaurant.name}}
+                        </div>
+                        <div class="location-restaurant">
+                            <i class="ion ion-location"></i> {{restaurant.location}}
+                        </div>
+                    </div>
+                    <div class="padding-10 hearth-vote" horizontal layout center center-justified
+                         ng-class="{active: restaurant.hearth}" ng-click="bookmarkRestaurant($event)">
+                        <i class="ionn ion-heart hearth-icon"></i>
+                    </div>
                 </div>
-              </div>
-              <div flex horizontal layout class="info-phone">
-                <i class="ion ion-ios-email-outline"></i>
-
-                <div>
-                  Email <br/>
-                  {{detailRes.email}}
+                <div flex></div>
+                <div class="vote-restaurant">
+                    <div class="button-bar">
+                        <a class="button"><i class="ion ion-star energized"></i> {{restaurant.rate}}</a>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div horizontal layout class="info-phone">
-              <i class="fa fa-internet-explorer"></i>
+                <div class="function-list">
+                    <div class="button-bar">
+                        <a class="button tab-item" ng-click="goToPage()">
+                            <i class="icon fa fa-cutlery"></i>
 
-              <div>
-                Website <br/>
-                {{detailRes.website}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                            <div translate="FOR_HERE"></div>
+                        </a>
+                        <a class="button tab-item" ng-click="goToPage()">
+                            <i class="icon fa fa-inbox"></i>
 
-      <div class="card-item">
-        <div class="card">
-          <div class="item item-image">
-            <!--<div id="map" data-tap-disabled="true"></div>-->
-            <!--<img ng-src="{{restaurant.map}}" class="img-responsive">-->
-            <ui-gmap-google-map center='map.center' zoom='map.zoom' mapTypeId="map.type"></ui-gmap-google-map>
-          </div>
-          <div class="item">
-            <p style="color: green"><i class="ion ion-navigate"></i> Start Navigation</p>
-          </div>
+                            <div translate="TAKE_OUT"></div>
+                        </a>
+                        <a class="button tab-item icon-uber">
+                            <img src="./images/UBER-icon.png" alt="" class="img-responsive"/>
+
+                            <div translate="TAKE_UBER"></div>
+                        </a>
+                        <a class="button tab-item">
+                            <i class="icon ion-ios-star-outline"></i>
+
+                            <div translate="RATE"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-item">
-        <div class="card">
-          <div class="item">
-            <h2>Photo</h2>
-          </div>
+
+        <div class="list-card more-info-res">
+            <div class="card-item info-res">
+                <div class="card">
+                    <div class="item">
+                        <div>
+                            HOURS: {{restaurant.open}}
+                        </div>
+                        <div>
+                            CUISINES: Pure Veg | North Indian
+                        </div>
+                        <div horizontal layout>
+                            <div flex horizontal layout class="info-phone">
+                                <i class="ion ion-ios-telephone"></i>
+
+                                <div>
+                                    Phone <br/>
+                                    {{restaurant.telephone}}
+                                </div>
+                            </div>
+                            <div flex horizontal layout class="info-phone">
+                                <i class="ion ion-ios-email-outline"></i>
+
+                                <div>
+                                    Email <br/>
+                                    {{restaurant.email}}
+                                </div>
+                            </div>
+                        </div>
+                        <div horizontal layout class="info-phone">
+                            <i class="fa fa-internet-explorer"></i>
+
+                            <div>
+                                Website <br/>
+                                {{restaurant.website}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card">
+                    <div class="item item-image">
+                        <!--<div id="map" data-tap-disabled="true"></div>-->
+                        <!--<img ng-src="{{restaurant.map}}" class="img-responsive">-->
+                        <ui-gmap-google-map center='map.center' zoom='map.zoom' mapTypeId="map.type">
+                            <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events"
+                                            idkey="marker.id">
+                            </ui-gmap-marker>
+                        </ui-gmap-google-map>
+
+                    </div>
+                    <div class="item">
+                        <p style="color: green"><i class="ion ion-navigate"></i> <span translate="START_NAV"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="card">
+                    <div class="item">
+                        <h2><i class="ion ion-images"></i> <span translate="PHOTO"></span></h2>
+                    </div>
+                    <div class="list-img-restaurant">
+                        <img src="./images/res-1.jpg" alt=""/>
+                        <img src="./images/res-2.jpg" alt=""/>
+                        <img src="./images/res-3.jpg" alt=""/>
+                        <img src="./images/res-4.jpg" alt=""/>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-item">
-        <div class="card">
-          <div class="item">
-            <h2>Menu</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </ion-content>
+    </ion-content>
 </ion-view>
 <style>
-  #map {
-    width: 100%;
-    height: 300px;
-  }
+    #map {
+        width: 100%;
+        height: 150px;
+    }
 
-  .angular-google-map-container {
-    height: 300px;
-  }
+    .angular-google-map-container {
+        height: 150px;
+    }
 </style>

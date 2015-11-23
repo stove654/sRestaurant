@@ -1,8 +1,4 @@
 <ion-view>
-  <ion-nav-buttons side="right">
-    <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
-
   <ion-nav-title>
     <a class="logo-app">Orders History</a>
   </ion-nav-title>
@@ -10,14 +6,11 @@
   <ion-content style="background-color: #f0f3f4" class="invoice">
 
     <div class="i-header">
-      <h4>Order detail</h4>
+      <h4>Order detail <span class="pull-right">#{{orderDetail.id}}</span></h4>
     </div>
     <div class="i-info-res">
-      <div style="padding: 0 5px;">
-        <img src="./images/yeoman.png" alt="" style="width: 30px; height: 30px"/>
-      </div>
       <div class="width-50 padding-5">
-        <h5>Apple Inc.</h5>
+        <h5>sRestaurant.</h5>
         <p>
           30, cau giay, Ha Noi <br/>
           Telephone: 0163 8678 364 <br/>
@@ -25,9 +18,8 @@
         </p>
       </div>
       <div class="width-50 text-right padding-5">
-        <h5>#{{orderDetail.orderNo}}</h5>
         <p>
-          Date: {{orderDetail.createdTime | date}} <br/>
+          Date: {{orderDetail.paid_at | date}} <br/>
           Status: <span class="label">Paid</span>
         </p>
       </div>
@@ -68,99 +60,36 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in orderDetail.details">
+        <tr ng-repeat="item in orderDetail.foods">
           <th>{{$index + 1}}</th>
-          <th class="text-left">{{item.itemName}}</th>
+          <th class="text-left">{{item.name}}</th>
           <th>{{item.quantity}}</th>
-          <th>{{item.size | menuItemSize}}</th>
-          <th class="text-right">{{item.price | currency:'&#8377;'}}</th>
-          <th class="text-right" style="padding-right: 5px">{{item.price * item.quantity | currency:'&#8377;'}}</th>
+          <th>
+            <span ng-show="item.isHalf">H</span>
+            <span ng-show="!item.isHalf">F</span>
+          </th>
+          <th class="text-right">
+            {{item.price | currency}}
+          </th>
+          <th class="text-right" style="padding-right: 5px">{{item.subtotal | currency}}</th>
         </tr>
         <tr>
           <th colspan="5" class="text-right"><strong>Subtotal</strong></th>
-          <th class="text-right" style="padding-right: 5px">{{100 | currency:'&#8377;'}}</th>
+          <th class="text-right" style="padding-right: 5px">{{orderDetail.total | currency}}</th>
         </tr>
         <tr>
           <th colspan="5" class="text-right no-border"><strong>VAT Included in Total</strong></th>
-          <th class="text-right" style="padding-right: 5px">$0.00</th>
+          <th class="text-right" style="padding-right: 5px">{{orderDetail.total / 100 * orderDetail.tax | currency}}</th>
         </tr>
         <tr>
           <th colspan="5" class="text-right no-border"><strong>Total</strong></th>
-          <th class="text-right" style="padding-right: 5px"><strong>{{100 | currency:'&#8377;'}}</strong></th>
+          <th class="text-right" style="padding-right: 5px"><strong>{{orderDetail.total + orderDetail.total / 100 * orderDetail.tax | currency}}</strong></th>
         </tr>
         </tbody>
       </table>
     </div>
 
 
-
-    <!--<div class="detail-for-order">
-      <div class="card-item info-res">
-        <div class="card no-margin">
-          <div class="detail-text padding-5">
-            <div style="width: 50%; float: left" class="text-order">
-              <p>
-                Details of your order on {{orderDetail.createdTime | date : 'medium'}}
-              </p>
-
-            </div>
-            <div style="width: 50%; float: right" class="padding-5">
-              <div class="subtotal-order" horizontal layout>
-                <div flex horizontal layout center end-justified>Subtotal:</div>
-                <div flex horizontal layout center end-justified>{{orderDetail.totalAmount / 1.1 | currency:'&#8377;'}}</div>
-              </div>
-              <div class="subtotal-order" horizontal layout>
-                <div flex horizontal layout center end-justified>Tax / VAT:</div>
-                <div flex horizontal layout center end-justified>{{(orderDetail.totalAmount / 1.1) * 0.1 | currency:'&#8377;'}}
-                </div>
-              </div>
-              <div class="subtotal-order" horizontal layout>
-                <div flex horizontal layout center end-justified>TOTAL:</div>
-                <div flex horizontal layout center end-justified>{{orderDetail.totalAmount | currency:'&#8377;'}}</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="text-invoice-bottom text-center padding-15">
-      &lt;!&ndash; UI for “Request Printed Invoice”, or “email invoice"&ndash;&gt;
-      <table class="table table-request">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Size</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in orderDetail.details">
-          <th>{{$index + 1}}</th>
-          <th>{{item.itemName}}</th>
-          <th>{{item.price | currency:'&#8377;'}}</th>
-          <th>{{item.quantity}}</th>
-          <th>{{item.size | menuItemSize}}</th>
-        </tr>
-        </tbody>
-      </table>
-      <div class="requset-number">
-        <p>Your order #</p>
-
-        <h2 class="requset-order-number">
-          {{orderDetail.orderNo}}
-        </h2>
-
-        <p class="request-date">
-          {{orderDetail.createdTime | date : 'medium'}}
-        </p>
-      </div>
-    </div>
--->
   </ion-content>
 
 </ion-view>

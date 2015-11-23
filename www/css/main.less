@@ -1019,6 +1019,9 @@
     -webkit-transform: rotateY(180deg); /* Safari */
     transform: rotateY(180deg);
   }
+  .ion-images {
+    margin-right: 8px;
+  }
 }
 .box-restaurant {
   color: #555;
@@ -1396,6 +1399,39 @@ body, .ionic-body {
       background-color: #222;
       border-color: #222;
     }
+    i {
+      font-size: 22px !important;
+    }
+    &:nth-child(1) {
+      i {
+        color: #387ef5;
+      }
+    }
+    &:nth-child(2) {
+      i {
+        color: #11c1f3;
+      }
+    }
+    &:nth-child(3) {
+      i {
+        color: #33cd5f;
+      }
+    }
+    &:nth-child(4) {
+      i {
+        color: #ffc900;
+      }
+    }
+    &:nth-child(5) {
+      i {
+        color: #ef473a;
+      }
+    }
+    &:nth-child(6) {
+      i {
+        color: #886aea;
+      }
+    }
   }
 }
 .img-restaurant-default img {
@@ -1473,11 +1509,23 @@ body, .ionic-body {
   overflow: hidden;
 }
 
-@media screen and (max-width: 480px){
-  .i-info-invoice {
-    .width-50 {
-      width: 100%;
-      text-align: left;
+.list-img-restaurant {
+  padding: 5px;
+  img {
+    width: 50%;
+    float: left;
+    padding: 5px;
+  }
+}
+.languages {
+  max-width: 140px;
+  max-height: 80px;
+  a {
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    img {
+      margin-right: 10px;
     }
   }
 }

@@ -951,6 +951,9 @@
   /* Safari */
   transform: rotateY(180deg);
 }
+.hearth-vote .ion-images {
+  margin-right: 8px;
+}
 .box-restaurant {
   color: #555;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -1307,6 +1310,27 @@ body,
   background-color: #222;
   border-color: #222;
 }
+.menu-left a i {
+  font-size: 22px !important;
+}
+.menu-left a:nth-child(1) i {
+  color: #387ef5;
+}
+.menu-left a:nth-child(2) i {
+  color: #11c1f3;
+}
+.menu-left a:nth-child(3) i {
+  color: #33cd5f;
+}
+.menu-left a:nth-child(4) i {
+  color: #ffc900;
+}
+.menu-left a:nth-child(5) i {
+  color: #ef473a;
+}
+.menu-left a:nth-child(6) i {
+  color: #886aea;
+}
 .img-restaurant-default img {
   width: 100%;
   max-height: 166px;
@@ -1375,9 +1399,23 @@ body,
 .i-info-res {
   overflow: hidden;
 }
-@media screen and (max-width: 480px) {
-  .i-info-invoice .width-50 {
-    width: 100%;
-    text-align: left;
-  }
+.list-img-restaurant {
+  padding: 5px;
+}
+.list-img-restaurant img {
+  width: 50%;
+  float: left;
+  padding: 5px;
+}
+.languages {
+  max-width: 140px;
+  max-height: 80px;
+}
+.languages a {
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+}
+.languages a img {
+  margin-right: 10px;
 }

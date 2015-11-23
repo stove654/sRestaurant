@@ -8,7 +8,9 @@ angular.module('starter', [
   'ionic',
   'starter.controllers',
   'LocalStorageModule',
-  'ngTouch'
+  'ngTouch',
+  'uiGmapgoogle-maps',
+  'pascalprecht.translate'
 ])
 
   .run(function ($ionicPlatform) {
@@ -27,7 +29,7 @@ angular.module('starter', [
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $stateProvider
       .state('intro', {
         url: "/intro",
@@ -44,18 +46,9 @@ angular.module('starter', [
         templateUrl: "templates/main.html",
         controller: "MainCtrl"
       })
-      .state('main.home', {
-        url: "/home",
-        templates: {
-          'menuContent': {
-            templateUrl: "templates/states/home.html",
-            controller: "HomeCtrl"
-          }
-        }
-      })
       .state('main.restaurantList', {
         url: "/restaurantList",
-        templates: {
+        views: {
           'menuContent': {
             templateUrl: "templates/states/restaurantList.html",
             controller: "RestaurantListCtrl"
@@ -81,7 +74,7 @@ angular.module('starter', [
         }
       })
       .state('main.menu', {
-        url: "/menu/:type/:idRestaurant",
+        url: "/menu/:idRestaurant",
         views: {
           'menuContent': {
             templateUrl: "templates/states/menu.html",
@@ -90,7 +83,7 @@ angular.module('starter', [
         }
       })
       .state('main.order', {
-        url: "/order/:type/:idRestaurant",
+        url: "/order/:idRestaurant",
         views: {
           'menuContent': {
             templateUrl: "templates/states/order.html",
@@ -119,4 +112,7 @@ angular.module('starter', [
 
     //$urlRouterProvider.otherwise("/intro");
     $urlRouterProvider.otherwise("/intro");
+
+    $ionicConfigProvider.views.transition('none');
+    $ionicConfigProvider.views.maxCache(0);
   });
