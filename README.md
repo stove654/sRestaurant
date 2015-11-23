@@ -16,6 +16,7 @@ SETUP.
   - npm install
   - bower install
   - ionic serve
+  
 INSTALL PLUGIN.
 
   - cordova-plugin-console https://github.com/apache/cordova-plugin-console
