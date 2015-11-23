@@ -2,13 +2,16 @@
 Support.
 
   - Email: stove654@gmail.com
-  
+  - link apk arm: https://drive.google.com/drive/u/0/folders/0BzNIBd9dNEXgUXdsWU05SWJZekE
+  - link apk arm: https://drive.google.com/drive/u/0/folders/0BzNIBd9dNEXgUXdsWU05SWJZekE
+
 Features of the app.
   - Show list and restaurant information, restaurant menus
   - Create order based information access and payment
   - Multilingual
   - Login facebook native
   - Full UI application for restaurant
+  - Use google map API
   - Already server nodejs/mongodb/socket.io if u want can contact me (free)
   - ...
 
