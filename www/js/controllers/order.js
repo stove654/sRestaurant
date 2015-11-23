@@ -49,7 +49,6 @@ angular.module('starter')
         order.paid_at = new Date();
         order.restaurant = $scope.restaurant;
         order.user = localStorageService.get('sRestaurantUser');
-        console.log(order)
         ordersHistory.push(angular.copy(order));
         localStorageService.set('sRestaurantHistory', ordersHistory)
         $scope.action = $scope.payments[index];

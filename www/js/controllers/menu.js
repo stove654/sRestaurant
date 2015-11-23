@@ -45,28 +45,28 @@ angular.module('starter')
         description: 'sandwich consisting of one or more cooked patties of ground meat'
       },
       {
-        id: 1,
+        id: 2,
         idCategory: 1,
-        name: 'Hamburger',
-        price: 18.5,
+        name: 'Chicken',
+        price: 26,
         quantity: 1,
-        description: 'sandwich consisting of one or more cooked patties of ground meat'
+        description: 'Lotte ria is good!'
       },
       {
-        id: 1,
+        id: 3,
         idCategory: 1,
-        name: 'Hamburger',
-        price: 18.5,
+        name: 'Pizza',
+        price: 36,
         quantity: 1,
-        description: 'sandwich consisting of one or more cooked patties of ground meat'
+        description: 'Pizza 4P'
       },
       {
-        id: 1,
+        id: 4,
         idCategory: 1,
-        name: 'Hamburger',
-        price: 18.5,
+        name: 'Chocolate Cake',
+        price: 13.5,
         quantity: 1,
-        description: 'sandwich consisting of one or more cooked patties of ground meat'
+        description: 'Chocolate Cake consisting of one or more cooked patties of ground meat'
       }
     ];
 
@@ -78,7 +78,6 @@ angular.module('starter')
     };
 
     $scope.goOrderPayment = function () {
-      console.log('dsadsa');
       $state.go('main.order', {id: $scope.restaurant.filterId});
       $scope.calculateOrder();
     }

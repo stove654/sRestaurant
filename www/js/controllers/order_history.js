@@ -12,5 +12,4 @@ angular.module('starter')
 
     $scope.orderDetail = localStorageService.get('sRestaurantOrderDetail');
 
-    console.log($scope.orderDetail);
   });
