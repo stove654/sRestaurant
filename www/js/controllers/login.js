@@ -31,10 +31,12 @@ angular.module('starter')
     $scope.goBackLogin = function () {
       $scope.signin = false;
       $scope.signup = false;
+      $scope.isForgotPass = false;
     };
 
-    $scope.signUp = function () {
-
+    $scope.forgotPass = function () {
+      $scope.isForgotPass = true;
+      $scope.signin = true;
     };
 
 

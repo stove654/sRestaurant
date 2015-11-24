@@ -2,10 +2,14 @@
 Support.
 
   - Email: stove654@gmail.com
-  - link apk arm: https://drive.google.com/drive/u/0/folders/0BzNIBd9dNEXgUXdsWU05SWJZekE
-  - link apk arm: https://drive.google.com/drive/u/0/folders/0BzNIBd9dNEXgUXdsWU05SWJZekE
+  - link apk arm: https://drive.google.com/file/d/0BzNIBd9dNEXgWTVrVVFaNEdyUFU/view?usp=sharing
+  - link apk x86: https://drive.google.com/file/d/0BzNIBd9dNEXgcmdBVzJNcVAwZGs/view?usp=sharing
+  - link download macos: https://drive.google.com/file/d/0BzNIBd9dNEXgUGt3UEpUc29fczQ/view?usp=sharing
+  - link download window: https://drive.google.com/file/d/0BzNIBd9dNEXgRER6UDRXbXNfOGM/view?usp=sharing
+
 
 Features of the app.
+
   - Show list and restaurant information, restaurant menus
   - Create order based information access and payment
   - Multilingual
@@ -13,12 +17,22 @@ Features of the app.
   - Full UI application for restaurant
   - Use google map API
   - Already server nodejs/mongodb/socket.io if u want can contact me (free)
+  - App can run on macos/window (version 1.0 not support login facebook)
   - ...
 
+
 SETUP.
+
+  - npm install -g ionic cordova
+  - npm install -g grunt-cli
   - npm install
   - bower install
   - ionic serve
+
+
+BUILD APP ON MAC/WINDOW on mac (need install winehd)
+  - grunt buildapp (u can config build app in file www/package.json)
+
   
 INSTALL PLUGIN.
 

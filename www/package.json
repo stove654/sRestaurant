@@ -1,0 +1,21 @@
+{
+  "main": "index.html",
+  "name": "sRestaurant",
+  "description": "App for restaurant",
+  "version": "0.1.0",
+  "keywords": [ "sRestaurant" ],
+  "window": {
+    "title": "sRestaurant",
+    "toolbar": true,
+    "frame": true,
+    "width": 500,
+    "height": 700,
+    "position": "center"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {
+    "deck":"latest"
+  }
+}

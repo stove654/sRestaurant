@@ -85,5 +85,27 @@
             </div>
         </div>
 
+        <div class="login" vertical layout ng-show="isForgotPass">
+
+            <div flex class="text-center" horizontal layout center center-justified>
+                <img src="./images/logo.png" alt="" class="img-logo"/>
+            </div>
+
+            <div class="form-login-page form-singup-page" style="margin-bottom: 60px">
+
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="email" placeholder="Your email" ng-model="account.email">
+                    </label>
+                </div>
+            </div>
+
+            <div class="bottom-login-page">
+                <div class="button-bar" style="border-right: 0">
+                    <a class="button" ng-click="goBackLogin()">Send new password to email!</a>
+                </div>
+            </div>
+        </div>
+
     </ion-content>
 </ion-view>
